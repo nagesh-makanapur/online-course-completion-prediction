@@ -1,54 +1,72 @@
-🎓 Online Course Completion Prediction
+# 🎓 Online Course Completion Prediction (FastAPI + ML)
 
-The **Online Course Completion Prediction** system is a machine learning-based solution aimed at identifying whether a student will complete an online course. By analyzing behavioral, demographic, and interaction data, this project enables education platforms and course providers to enhance retention, personalize experiences, and intervene proactively.
-
-> 🎯 **Goal**: Predict the likelihood of a student completing an online course based on historical data.  
-> 📌 **Target Column**: `completed_course` (Binary: 1 = Completed, 0 = Not Completed)
+This project predicts whether a learner will complete an online course based on demographic and engagement features.  
+It includes both **training pipeline** and an **inference API** (FastAPI) for serving predictions.
 
 ---
 
-## 🎬 Demo
-
-For a cool demo of this project, check out the **Jupyter Notebook** included in the repository.
+## 📂 Project Structure
+````
+Online-Course-Completion-ML/
+│── app/ # FastAPI application
+│ ├── main.py # FastAPI entrypoint
+│ ├── inference.py # Inference class (loads model & preprocessing)
+│ ├── init.py
+│
+│── data/ # Dataset
+│ └── online_course_completion.csv
+│
+│── models/ # Saved ML model
+│ └── model.pkl
+│
+│── notebooks/ # Jupyter notebooks for EDA & training
+│ └── training.ipynb
+│
+│── requirements.txt # Python dependencies
+│── README.md # Project documentation
 
 
 ---
 
-## ✅ Features
+## ⚙️ Installation
 
-- Performs **EDA** (Exploratory Data Analysis) and **Data Cleaning**
-- Implements **Label Encoding**, **Standardization**, and **Train-Test Split**
-- Trains machine learning models like **Random Forest**, **Logistic Regression**, etc.
-- Evaluates model performance using **Accuracy, Confusion Matrix, Precision, Recall, F1-score**
-- Displays **Feature Importance** for interpretability
-
----
-
-## 📦 Requirements
-
-Install the required Python libraries using:
+Clone the repo:
 
 ```bash
-pip install pandas numpy matplotlib seaborn scikit-learn
+git clone https://github.com/nagesh-makanapur /Online-Course-Completion-ML.git
+cd Online-Course-Completion-ML
+````
+Install dependencies:
+```
+pip install -r requirements.txt
+```
+📊 Dataset
 
-**🚀 Installation & Usage**
-🔧 Step 1: Clone the Repository
-git clone https://github.com/nagesh-makanapur/online-course-completion-prediction.git
-cd online-course-completion-prediction
-📥 Step 2: Launch Jupyter Notebook
-jupyter notebook
+The dataset used is:
 
-🧠 Step 3: Run the Notebook
-Open online_course_prediction.ipynb and execute the cells in order:
+File: data/online_course_completion.csv
 
-Import libraries
+Features: learner demographics + engagement statistics
 
-Load dataset (online_course_completion.csv)
+Target: completed (1 = completed, 0 = not completed)
 
-Explore and clean the data
+🚀 Training
 
-Encode categorical features
+To train the model, use the Jupyter Notebook in notebooks/training.ipynb.
+It handles preprocessing (scaling, encoding) and saves the model as models/model.pkl.
 
-Train models (Random Forest, etc.)
+🤖 Inference API (FastAPI)
 
-Evaluate and interpret results
+The inference class loads the trained model & preprocessing pipeline, then exposes a predict method.
+It is wrapped with FastAPI for serving predictions.
+
+Run FastAPI server:
+``````
+python -m uvicorn app.main:app --reload
+🛠 Requirements
+```````
+All dependencies are listed in requirements.txt:
+
+
+
+
