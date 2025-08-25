@@ -63,8 +63,8 @@ It is wrapped with FastAPI for serving predictions.
 Run FastAPI server:
 ``````
 python -m uvicorn app.main:app --reload
-🛠 Requirements
 ```````
+🛠 Requirements
 All dependencies are listed in requirements.txt:
 
 
